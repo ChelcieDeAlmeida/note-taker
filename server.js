@@ -11,10 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-    res.status(404).end();
-});
 
 function filterByQuery(query, notesArray) {
   let filteredResults = notesArray;
@@ -92,6 +88,13 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+
+// Default response for any other request (Not Found)
+// app.use((req, res) => {
+//     res.status(404).end();
+// });
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
